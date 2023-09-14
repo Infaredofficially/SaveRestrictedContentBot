@@ -18,7 +18,7 @@ async def sett(event):
         xx = await conv.send_message("Send me any image for thumbnail as a `reply` to this message, Senpai 🥵.")
         x = await conv.get_reply()
         if not x.media:
-            xx.edit("No media found.")
+            xx.edit("No media found, Gomen 😔.")
         mime = x.file.mime_type
         if not 'png' in mime:
             if not 'jpg' in mime:
@@ -30,7 +30,7 @@ async def sett(event):
         if os.path.exists(f'{event.sender_id}.jpg'):
             os.remove(f'{event.sender_id}.jpg')
         os.rename(path, f'./{event.sender_id}.jpg')
-        await t.edit("Temporary thumbnail saved!")
+        await t.edit("Temporary thumbnail saved😌!")
         
 @Drone.on(events.callbackquery.CallbackQuery(data="rem"))
 async def remt(event):  
@@ -38,12 +38,12 @@ async def remt(event):
     await event.edit('Trying.')
     try:
         os.remove(f'{event.sender_id}.jpg')
-        await event.edit('Removed!')
+        await event.edit('Removed😳!')
     except Exception:
-        await event.edit("No thumbnail saved.")                        
+        await event.edit("No thumbnail saved, Gomen 😔.")                        
   
 @Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
-    text = "Send me Link of any message to clone it here, For private channel message, send invite link first.\n\n**SUPPORT:** @TeamDrone"
+    text = "Senpai ✋🏽😊, Send me Link of any message to clone it here, For private channel message, send invite link first.\n\n**SUPPORT:** @TeamDrone"
     await start_srb(event, text)
     
