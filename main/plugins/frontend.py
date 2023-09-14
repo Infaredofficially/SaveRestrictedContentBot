@@ -15,7 +15,7 @@ from ethon.telefunc import force_sub
 
 ft = f"To use this bot you've to join @{fs}."
 
-message = "Send me the message link you want to start saving from, as a reply to this message."
+message = "Send me the hush-hush🤫 message link you want to start saving from, as a reply to this message, Senpai😊."
 
 @Drone.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def clone(event):
