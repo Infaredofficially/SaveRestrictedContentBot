@@ -12,13 +12,13 @@ from datetime import datetime as dt
 async def join(client, invite_link):
     try:
         await client.join_chat(invite_link)
-        return "Successfully joined the Channel"
+        return "Successfully joined the Channel, Yay😌"
     except UserAlreadyParticipant:
         return "User is already a participant."
     except (InviteHashInvalid, InviteHashExpired):
-        return "Could not join. Maybe your link is expired or Invalid."
+        return "Could not join. Maybe your link is expired or Invalid🤷🏻."
     except FloodWait:
-        return "Too many requests, try again later."
+        return "Too many requests, try again later, Baka Senpai😾."
     except Exception as e:
         print(e)
         return "Could not join, try joining manually."
