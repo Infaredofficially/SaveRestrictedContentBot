@@ -1,14 +1,14 @@
 {
-    "name": "Save restricted content bot",
-    "description": "Telegram bot to save restricted content.",
-    "logo": "",
+    "name": "Vermeil restricted content bot",
+    "description": "Vermeil Telegram bot to save restricted content (by Infared).",
+    "logo": "https://graph.org/file/bde0cc4a3a5fd85051ddd.jpg",
     "keywords": [
         "telegram",
         "Save restricted content",
         "bot"
     ],
     "repository": "https://github.com/vasusen-code/SaveRestrictedContentBot",
-    "website": "",
+    "website": "https://linktr.ee/infaredofficially",
     "success_url": "https://t.me/DroneBots",
     "env": {
         "API_HASH": {
