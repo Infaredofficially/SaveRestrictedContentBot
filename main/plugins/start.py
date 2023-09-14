@@ -23,7 +23,7 @@ async def sett(event):
         if not 'png' in mime:
             if not 'jpg' in mime:
                 if not 'jpeg' in mime:
-                    return await xx.edit("No image found.")
+                    return await xx.edit("No image found, Gomenasai 😔.")
         await xx.delete()
         t = await event.client.send_message(event.chat_id, 'Trying.')
         path = await event.client.download_media(x.media)
