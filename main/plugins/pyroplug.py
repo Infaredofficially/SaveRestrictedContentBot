@@ -1,5 +1,3 @@
-#Github.com-Vasusen-code
-
 import asyncio, time, os
 
 from .. import bot as Drone
@@ -38,10 +36,11 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i):
         else:
             chat = int('-100' + str(msg_link.split("/")[-2]))
         file = ""
+        msg = None  # Initialize 'msg' with None
         try:
             msg = await userbot.get_messages(chat, msg_id)
             if msg.media:
-                if msg.media==MessageMediaType.WEB_PAGE:
+                if msg.media == MessageMediaType.WEB_PAGE:
                     edit = await client.edit_message_text(sender, edit_id, "Cloning.")
                     await client.send_message(sender, msg.text.markdown)
                     await edit.delete()
@@ -68,7 +67,7 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i):
             caption = None
             if msg.caption is not None:
                 caption = msg.caption
-            if msg.media==MessageMediaType.VIDEO_NOTE:
+            if msg.media == MessageMediaType.VIDEO_NOTE:
                 round_message = True
                 print("Trying to get metadata")
                 data = video_metadata(file)
@@ -91,7 +90,7 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i):
                         time.time()
                     )
                 )
-            elif msg.media==MessageMediaType.VIDEO and msg.video.mime_type in ["video/mp4", "video/x-matroska"]:
+            elif msg.media == MessageMediaType.VIDEO and msg.video.mime_type in ["video/mp4", "video/x-matroska"]:
                 print("Trying to get metadata")
                 data = video_metadata(file)
                 height, width, duration = data["height"], data["width"], data["duration"]
@@ -116,11 +115,11 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i):
                     )
                 )
             
-            elif msg.media==MessageMediaType.PHOTO:
+            elif msg.media == MessageMediaType.PHOTO:
                 await edit.edit("Uploading photo.")
                 await bot.send_file(sender, file, caption=caption)
             else:
-                thumb_path=thumbnail(sender)
+                thumb_path = thumbnail(sender)
                 await client.send_document(
                     sender,
                     file, 
@@ -151,12 +150,12 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i):
             or "SendMediaRequest" in str(e) \
             or str(e) == "File size equals to 0 B":
                 try: 
-                    if msg.media==MessageMediaType.VIDEO and msg.video.mime_type in ["video/mp4", "video/x-matroska"]:
+                    if msg.media == MessageMediaType.VIDEO and msg.video.mime_type in ["video/mp4", "video/x-matroska"]:
                         UT = time.time()
                         uploader = await fast_upload(f'{file}', f'{file}', UT, bot, edit, '**UPLOADING:**')
                         attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, round_message=round_message, supports_streaming=True)] 
                         await bot.send_file(sender, uploader, caption=caption, thumb=thumb_path, attributes=attributes, force_document=False)
-                    elif msg.media==MessageMediaType.VIDEO_NOTE:
+                    elif msg.media == MessageMediaType.VIDEO_NOTE:
                         uploader = await fast_upload(f'{file}', f'{file}', UT, bot, edit, '**UPLOADING:**')
                         attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, round_message=round_message, supports_streaming=True)] 
                         await bot.send_file(sender, uploader, caption=caption, thumb=thumb_path, attributes=attributes, force_document=False)
